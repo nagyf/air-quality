@@ -16,8 +16,13 @@ export const MeasurementsScreen = ({ navigation }) => {
 
                     return (
                         <View key={item.parameter} style={styles.card}>
-                            <Text style={styles.title}>{parameter.name}: {item.value.toFixed(2)} {item.unit}</Text>
-                            <Text style={styles.description}>{parameter.description}</Text>
+                            <View style={styles.left}>
+                                <Text style={styles.title}>{parameter.name}</Text>
+                                <Text style={styles.description}>{parameter.description}</Text>
+                            </View>
+                            <View  style={styles.right}>
+                            <Text style={styles.value}>{item.value.toFixed(2)} {item.unit}</Text>
+                            </View>
                         </View>
                     );
                 }}
@@ -36,6 +41,8 @@ const styles = StyleSheet.create({
         padding: 10
     },
     card: {
+        flexDirection: 'row',
+        alignItems: 'center',
         borderWidth: 1,
         borderColor: '#ddd',
         padding: 20,
@@ -47,5 +54,14 @@ const styles = StyleSheet.create({
     description: {
         fontSize: 14,
         color: '#444'
+    },
+    value: {
+        fontSize: 18
+    },
+    left: {
+        flex: 1
+    },
+    right: {
+        paddingLeft: 10
     }
 });
